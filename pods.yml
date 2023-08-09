@@ -1,26 +1,13 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Pod
 metadata:
-  name: nginx-deployment
+  name: nodeapp
   labels:
-    app: order-label
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: order-label
-  template:
-    metadata:
-      labels:
-        app: order-label
+    app: nodeapp
 
-    spec:
-      containers:
-        - name: nginx1
-          image: nginx:1.14.2
-          ports:
-            - containerPort: 80
-        - name: nginx2
-          image: pallavink/2022cfse034-docker-ecr-img
-          ports:
-            - containerPort: 80
+spec:
+  containers:
+    - name: nginx1
+      image: nginx:1.14.2
+      ports:
+        - containerPort: 8080      
